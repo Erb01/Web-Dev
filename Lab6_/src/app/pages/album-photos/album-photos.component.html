@@ -1,0 +1,12 @@
+<h2>Photos</h2>
+
+<div class="grid">
+  <div *ngFor="let p of photos">
+    <img [src]="p.thumbnailUrl" 
+         [alt]="p.title"
+         (error)="onImageError($event)">
+    <p>{{p.title}}</p>
+  </div>
+</div>
+
+<button routerLink="../">Back</button>
