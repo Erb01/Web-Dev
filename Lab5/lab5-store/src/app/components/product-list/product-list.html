@@ -1,0 +1,17 @@
+<div class="product-list">
+  @if (products().length === 0) {
+    <div class="no-products">
+      <p>No products in this category</p>
+    </div>
+  } @else {
+    <div class="products-grid">
+      @for (product of products(); track product.id) {
+        <app-product-item 
+          [product]="product"
+          (productDeleted)="onProductDeleted($event)"
+          (productLiked)="onProductLiked($event)"
+        ></app-product-item>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,39 @@
+<div class="product-card">
+  <div class="product-image">
+    <img [src]="product().imageUrl" [alt]="product().name" />
+  </div>
+  
+  <div class="product-info">
+    <h3 class="product-name">{{ product().name }}</h3>
+    <p class="product-description">{{ product().description }}</p>
+    
+    <div class="product-rating">
+      @for (star of [1, 2, 3, 4, 5]; track star) {
+        <span class="star" [class.filled]="star <= product().rating">★</span>
+      }
+      <span class="rating-value">{{ product().rating }}</span>
+    </div>
+    
+    <div class="product-price">
+      {{ product().price | currency:'KZT':'symbol-narrow' }}
+    </div>
+    
+    <div class="product-likes">
+      <button class="like-btn" (click)="incrementLikes()">
+        ❤️ {{ product().likes }}
+      </button>
+    </div>
+    
+    <div class="product-actions">
+      <button class="delete-btn" (click)="deleteProduct()">🗑️ Delete</button>
+      <button class="share-btn" (click)="shareOnWhatsApp()">📱 WhatsApp</button>
+      <button class="share-btn" (click)="shareOnTelegram()">✈️ Telegram</button>
+    </div>
+    
+    <div class="product-link">
+      <a [href]="product().kaspiUrl" target="_blank" rel="noopener">
+        View on Kaspi.kz
+      </a>
+    </div>
+  </div>
+</div>
